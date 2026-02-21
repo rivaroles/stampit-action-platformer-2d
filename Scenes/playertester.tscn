@@ -1,0 +1,40 @@
+[gd_scene format=3 uid="uid://c1o01dr770pqc"]
+
+[ext_resource type="Script" uid="uid://oc1ynsbpyv2a" path="res://Scripts/carta.gd" id="1_bx0n0"]
+[ext_resource type="Texture2D" uid="uid://dttwjhv1md85" path="res://icon.svg" id="2_rrm57"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_obq52"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_rrm57")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_nh3c8"]
+radius = 8.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bx0n0"]
+size = Vector2(16, 32)
+
+[node name="Playertester" type="CharacterBody2D" unique_id=157121676]
+script = ExtResource("1_bx0n0")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=804811486]
+scale = Vector2(0.13281253, 0.2578125)
+sprite_frames = SubResource("SpriteFrames_obq52")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1137749503]
+scale = Vector2(1, 1.08)
+shape = SubResource("CapsuleShape2D_nh3c8")
+
+[node name="Hitbox" type="Area2D" parent="." unique_id=1509066185]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=1071748784]
+shape = SubResource("RectangleShape2D_bx0n0")
+debug_color = Color(0.9745304, 0.1445517, 0.18211839, 0.41960785)
+
+[connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]

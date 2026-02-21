@@ -1,3 +1,21 @@
 [gd_scene format=3 uid="uid://c4uey7gdg0qeu"]
 
+[ext_resource type="PackedScene" uid="uid://c1o01dr770pqc" path="res://Scenes/playertester.tscn" id="1_nh3c8"]
+[ext_resource type="PackedScene" uid="uid://cdnsjjq44a4bx" path="res://Scenes/inimigo.tscn" id="3_obq52"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_nh3c8"]
+
 [node name="Enemegos" type="Node2D" unique_id=654167820]
+
+[node name="Playertester" parent="." unique_id=157121676 instance=ExtResource("1_nh3c8")]
+position = Vector2(7, 74)
+
+[node name="Chao" type="StaticBody2D" parent="." unique_id=323399749]
+position = Vector2(48, -2)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Chao" unique_id=851793973]
+position = Vector2(50, 206)
+shape = SubResource("WorldBoundaryShape2D_nh3c8")
+
+[node name="Inimigo" parent="." unique_id=857377306 instance=ExtResource("3_obq52")]
+position = Vector2(138, 180)
